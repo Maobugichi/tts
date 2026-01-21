@@ -103,13 +103,13 @@ export const ConfigCard = ({
             <div className=" space-y-2">
               <Label htmlFor="format">Output Format</Label>
               <Select value={outputFormat} onValueChange={setOutputFormat}>
-                <SelectTrigger className='bg-red-500 w-full'  id="format">
+                <SelectTrigger className=' w-full'  id="format">
                   <SelectValue placeholder="Select format" />
                 </SelectTrigger>
                 <SelectContent>
                   {outputFormats.map(format => (
                     <SelectItem key={format.value} value={format.value}>
-                      {truncate(format.label,35)}
+                      {truncate(format.label,30)}
                     </SelectItem>
                   ))}
                 </SelectContent>
