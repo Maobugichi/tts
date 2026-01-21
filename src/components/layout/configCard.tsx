@@ -8,7 +8,7 @@ import { Loader2, Download, RefreshCw, Play, Volume2, AlertCircle } from 'lucide
 import type { UsageData, Voice } from '@/types';
 import { fetchUsage, handleDownload, handleSynthesize, playPreview } from '@/utils';
 import type { RefObject, SetStateAction } from 'react';
-import { outputFormats, popularVoices } from '@/constants';
+import { outputFormats} from '@/constants';
 import type React from 'react';
 
 interface ConfigCardProps {
