@@ -61,7 +61,7 @@ export const ConfigCard = ({
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
-            {/* Voice Selection */}
+           
             <div className="space-y-2">
               <div className="flex items-center justify-between">
                 <Label htmlFor="voice" className="flex items-center gap-2">
@@ -84,20 +84,13 @@ export const ConfigCard = ({
                   <SelectValue placeholder="Select a voice" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectGroup>
-                    <SelectLabel>Popular Voices</SelectLabel>
-                    {popularVoices.map(voice => (
-                      <SelectItem key={voice.id} value={voice.id}>
-                        {truncate(voice.name)}
-                      </SelectItem>
-                    ))}
-                  </SelectGroup>
+                  
                   {voices.length > 0 && (
                     <SelectGroup>
                       <SelectLabel>All Voices</SelectLabel>
                       {voices.map(voice => (
-                        <SelectItem key={voice.voiceId} value={voice.voiceId}>
-                          {truncate(`${voice.name} - ${voice.labels?.accent || voice.category}`, 35)}
+                        <SelectItem  key={voice.voiceId} value={voice.voiceId}>
+                          {truncate(`${voice.name} - ${voice.labels?.accent || voice.category}`, 30)}
                         </SelectItem>
                       ))}
                     </SelectGroup>
@@ -107,16 +100,16 @@ export const ConfigCard = ({
             </div>
 
           
-            <div className="space-y-2">
+            <div className=" space-y-2">
               <Label htmlFor="format">Output Format</Label>
               <Select value={outputFormat} onValueChange={setOutputFormat}>
-                <SelectTrigger id="format">
+                <SelectTrigger className='bg-red-500 w-full'  id="format">
                   <SelectValue placeholder="Select format" />
                 </SelectTrigger>
                 <SelectContent>
                   {outputFormats.map(format => (
                     <SelectItem key={format.value} value={format.value}>
-                      {format.label}
+                      {truncate(format.label,35)}
                     </SelectItem>
                   ))}
                 </SelectContent>
