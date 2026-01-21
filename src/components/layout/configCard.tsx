@@ -29,6 +29,12 @@ interface ConfigCardProps {
     setUsage:React.Dispatch<SetStateAction<UsageData |null>>;
 }
 
+// Helper function to truncate text
+const truncate = (text: string, maxLength: number = 30) => {
+  if (text.length <= maxLength) return text;
+  return text.slice(0, maxLength) + '...';
+};
+
 export const ConfigCard = ({
      voices,
      selectedVoiceId,
@@ -74,7 +80,7 @@ export const ConfigCard = ({
                 )}
               </div>
               <Select value={selectedVoiceId} onValueChange={setSelectedVoiceId}>
-                <SelectTrigger id="voice">
+                <SelectTrigger id="voice" className="w-full">
                   <SelectValue placeholder="Select a voice" />
                 </SelectTrigger>
                 <SelectContent>
@@ -82,7 +88,7 @@ export const ConfigCard = ({
                     <SelectLabel>Popular Voices</SelectLabel>
                     {popularVoices.map(voice => (
                       <SelectItem key={voice.id} value={voice.id}>
-                        {voice.name}
+                        {truncate(voice.name)}
                       </SelectItem>
                     ))}
                   </SelectGroup>
@@ -91,7 +97,7 @@ export const ConfigCard = ({
                       <SelectLabel>All Voices</SelectLabel>
                       {voices.map(voice => (
                         <SelectItem key={voice.voiceId} value={voice.voiceId}>
-                          {voice.name} - {voice.labels?.accent || voice.category}
+                          {truncate(`${voice.name} - ${voice.labels?.accent || voice.category}`, 35)}
                         </SelectItem>
                       ))}
                     </SelectGroup>
@@ -120,7 +126,7 @@ export const ConfigCard = ({
               </p>
             </div>
 
-            {/* Text Input */}
+           
             <div className="space-y-2">
               <div className="flex items-center justify-between">
                 <Label htmlFor="text">Text to Convert</Label>
